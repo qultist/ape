@@ -1,0 +1,11 @@
+{
+	"name": "last-day-of-month-template",
+	"items": [
+		{
+			"name": "item",
+			"weekdays": ["saturday"],
+			"quantity": 1,
+			"wage": 1
+		}
+	]
+}

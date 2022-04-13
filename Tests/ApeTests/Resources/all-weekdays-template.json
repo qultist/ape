@@ -1,0 +1,11 @@
+{
+	"name": "all-weekdays-template",
+	"items": [
+		{
+			"name": "item",
+			"weekdays": ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"],
+			"quantity": 1,
+			"wage": 1
+		}
+	]
+}

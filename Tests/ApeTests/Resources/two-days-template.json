@@ -1,0 +1,11 @@
+{
+	"name": "two-days-template",
+	"items": [
+		{
+			"name": "item",
+			"weekdays": ["monday", "wednesday"],
+			"quantity": 1,
+			"wage": 1
+		}
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"name": "empty-template",
+	"items": [
+		{
+			"name": "item",
+			"weekdays": [],
+			"quantity": 1,
+			"wage": 1
+		}
+	]
+}

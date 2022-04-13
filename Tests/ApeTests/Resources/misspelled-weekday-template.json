@@ -1,0 +1,11 @@
+{
+	"name": "misspelled-weekday-template",
+	"items": [
+		{
+			"name": "item",
+			"weekdays": ["munday"],
+			"quantity": 1,
+			"wage": 1
+		}
+	]
+}
