@@ -3,6 +3,8 @@ import class Foundation.Bundle
 
 final class ApeTests: XCTestCase {
 
+	private let iso8601Formatter = ISO8601DateFormatter()
+
 	func testMain() throws {
 		// This is an example of a functional test case.
 		// Use XCTAssert and related functions to verify your tests produce the correct
@@ -32,12 +34,27 @@ final class ApeTests: XCTestCase {
 		let data = pipe.fileHandleForReading.readDataToEndOfFile()
 		let output = String(data: data, encoding: .utf8)
 
-		let expected = """
-			04.04.2022\titem\t1.0\t1,00 €
-			11.04.2022\titem\t1.0\t1,00 €
-			18.04.2022\titem\t1.0\t1,00 €
-			25.04.2022\titem\t1.0\t1,00 €\n
-			"""
+		let dates = [
+			"2022-04-04T00:00:00Z",
+			"2022-04-11T00:00:00Z",
+			"2022-04-18T00:00:00Z",
+			"2022-04-25T00:00:00Z"
+		]
+
+		let dateFormatter = DateFormatter()
+		dateFormatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+
+		let numberFormatter = NumberFormatter()
+		numberFormatter.numberStyle = .currency
+
+		var expected = dates
+			.map { d -> String in
+				let date = dateFormatter.string(from: iso8601Formatter.date(from: d)!)
+				let wage = numberFormatter.string(from: 1)!
+				return "\(date)\titem\t1.0\t\(wage)"
+			}
+			.joined(separator: "\n")
+		expected += "\n"
 
 		XCTAssertEqual(expected, output)
 		#endif

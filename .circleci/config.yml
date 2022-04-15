@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    macos:
+      xcode: 13.3
+    steps:
+      - checkout
+      - run:
+          name: "Build"
+          command: swift build
+      - run:
+          name: "Run tests"
+          command: rake test
+      - store_test_results:
+          path: test-results
+
+workflows:
+  build-and-test:
+    jobs:
+      - build-and-test:
+          filters:
+            branches:
+              only:
+                - main

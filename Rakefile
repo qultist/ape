@@ -1,5 +1,11 @@
 task default: %w[build]
 
+desc "Run tests"
+task :test do
+	mkdir_p 'test-results'
+	sh %(swift test --parallel --xunit-output test-results/results.xml)
+end
+
 desc "Build ape"
 task :build do
 	sh %(swift build -c release --disable-sandbox)

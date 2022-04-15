@@ -1,5 +1,7 @@
 # Ape
 
+[![CircleCI](https://circleci.com/gh/qultist/ape/tree/main.svg?style=svg)](https://circleci.com/gh/qultist/ape/tree/main)
+
 Ape 🦧 is small command line tool to generate weekly repeating items from templates for [GrandTotal][1].
 
 ## Installation

@@ -90,7 +90,16 @@ final class TemplateTests: XCTestCase {
 
 		let template = try JSONDecoder().decode(Template.self, from: data)
 		let renderedItems = try template.render(forMonth: 4, andYear: 2022)
-		let expected = "04.04.2022\titem\t1.0\t1,00 €" // NBSP
+
+		let dateFormatter = DateFormatter()
+		dateFormatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+
+		let numberFormatter = NumberFormatter()
+		numberFormatter.numberStyle = .currency
+
+		let date = dateFormatter.string(from: iso8601Formatter.date(from: "2022-04-04T00:00:00Z")!)
+		let wage = numberFormatter.string(from: 1)!
+		let expected = "\(date)\titem\t1.0\t\(wage)"
 
 		XCTAssertEqual(expected, renderedItems.first?.tabSeparated)
 	}
