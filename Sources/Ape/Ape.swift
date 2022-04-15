@@ -21,7 +21,9 @@ struct Ape: ParsableCommand {
 	var year: Int?
 
 	func run() throws {
-		guard let templateUrl = URL(string: "file://\(templatePath)") else { throw ApeError.templatePathInvalid }
+		let workingDir = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+
+		guard let templateUrl = URL(string: templatePath, relativeTo: workingDir) else { throw ApeError.templatePathInvalid }
 		let templateData = try Data(contentsOf: templateUrl)
 		let template = try JSONDecoder().decode(Template.self, from: templateData)
 
