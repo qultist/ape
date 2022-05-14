@@ -1,5 +1,6 @@
 # Project
 test-results
+codecov
 
 # Swift Package Manager
 .DS_Store

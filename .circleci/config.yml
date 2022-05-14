@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs: 
+  codecov: codecov/codecov@3.2.2
+
 jobs:
   build-and-test:
     macos:
@@ -14,6 +17,9 @@ jobs:
           command: rake test
       - store_test_results:
           path: test-results
+      - run:
+          name: "Create code coverage report"
+          command: rake codecov
 
 workflows:
   build-and-test:
@@ -23,3 +29,11 @@ workflows:
             branches:
               only:
                 - main
+                - codecov
+      - codecov/upload:
+          file: coverage/report
+          filters:
+            branches:
+              only:
+                - main
+                - codecov

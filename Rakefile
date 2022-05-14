@@ -6,6 +6,13 @@ task :test do
 	sh %(swift test --parallel --xunit-output test-results/results.xml)
 end
 
+desc "Create code coverage report"
+task :codecov do
+	mkdir_p 'codecov'
+	sh %(swift test --enable-code-coverage)
+	sh %(./scripts/llvm-codecov.sh > codecov/report)
+end
+
 desc "Build ape"
 task :build do
 	sh %(swift build -c release --disable-sandbox)
