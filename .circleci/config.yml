@@ -20,18 +20,13 @@ jobs:
       - run:
           name: "Create code coverage report"
           command: rake codecov
+      - codecov/upload:
+          file: coverage/report
 
 workflows:
   build-and-test:
     jobs:
       - build-and-test:
-          filters:
-            branches:
-              only:
-                - main
-                - codecov
-      - codecov/upload:
-          file: coverage/report
           filters:
             branches:
               only:
