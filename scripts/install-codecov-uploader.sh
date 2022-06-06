@@ -1,7 +1,9 @@
 #!/bin/sh
 
-# Prerequisite
+# Prerequisites
 HOMEBREW_NO_AUTO_UPDATE=1 brew install gpg
+mkdir bin
+cd bin
 
 # Download and verify codecov uploader
 # See: https://docs.codecov.com/docs/codecov-uploader#integrity-checking-the-uploader
