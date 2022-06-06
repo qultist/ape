@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs: 
-  codecov: codecov/codecov@3.2.2
-
 jobs:
   build-and-test:
     macos:
@@ -20,8 +17,9 @@ jobs:
       - run:
           name: "Create code coverage report"
           command: rake codecov
-      - codecov/upload:
-          file: coverage/report
+      - run:
+          name: "Install codecov uploader"
+          command: scripts/install-codecov-uploader.sh
 
 workflows:
   build-and-test:
