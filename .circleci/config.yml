@@ -20,6 +20,9 @@ jobs:
       - run:
           name: "Install codecov uploader"
           command: scripts/install-codecov-uploader.sh
+      - run:
+          name: "Upload code coverage report"
+          command: bin/codecov -f codecov/report
 
 workflows:
   build-and-test:
